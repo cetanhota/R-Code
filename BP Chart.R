@@ -1,6 +1,6 @@
 library(DBI)
 library(RMySQL)
-con <- dbConnect(MySQL(), user="mysqladm", password="hawk69", 
+con <- dbConnect(MySQL(), user="", password="", 
                  dbname="bloodpressure", host="192.168.1.21")
 syst <- dbSendQuery(con, "select systolic from bp order by ID desc limit 10;")
 upperbp <- fetch(syst)
