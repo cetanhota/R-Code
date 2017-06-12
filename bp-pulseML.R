@@ -2,11 +2,10 @@ library(ggvis)
 library(class)
 library(gmodels)
 
-source("/Users/wayne/R/common_code/normalize_fn.R")
-source("/Users/wayne/R/common_code/MySQL-bp-con.R")
-setwd("/Users/wayne/R")
+source("/Users/wayne/R/common_code/common_code_V1.R")
 
 #dont go back past 02/20/2017
+con <- bp_db_connect()
 wwlquery <- dbSendQuery (con, "select systolic,diastolic,stage 
                          from bp where ts >='2017-02-20 00:00:00' and ts <='2017-06-01 00:00:00'
                          order by ts desc;")
