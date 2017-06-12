@@ -6,9 +6,9 @@ source("/Users/wayne/R/common_code/normalize_fn.R")
 source("/Users/wayne/R/common_code/MySQL-bp-con.R")
 setwd("/Users/wayne/R")
 
-#dont go back past 03/01/2017
+#dont go back past 02/20/2017
 wwlquery <- dbSendQuery (con, "select systolic,diastolic,stage 
-                         from bp where ts >='2017-03-01 00:00:00' and ts <='2017-04-30 00:00:00'
+                         from bp where ts >='2017-02-20 00:00:00' and ts <='2017-06-01 00:00:00'
                          order by ts desc;")
 wwldf <- fetch(wwlquery)
 complete <- dbHasCompleted(wwlquery)
@@ -34,3 +34,4 @@ wwldf.testLabels <- wwldf[ind==2, 3]
 wwldf_pred <- knn(train = wwldf.training, test = wwldf.test, cl = wwldf.trainLabels, k=3)
 wwldf_pred
 CrossTable(x = wwldf.testLabels, y = wwldf_pred, prop.chisq=FALSE)
+
